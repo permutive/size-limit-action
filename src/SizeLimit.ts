@@ -105,26 +105,18 @@ class SizeLimit {
     const results = JSON.parse(output);
 
     return results.reduce(
-      (current: { [name: string]: IResult }, result: any) => {
-        let time = {};
-
-        if (result.loading !== undefined && result.running !== undefined) {
-          const loading = +result.loading;
-          const running = +result.running;
-
-          time = {
-            running,
-            loading,
-            total: loading + running
-          };
-        }
+      (current: { [name: string]: IResult }, result: any, i: number) => {
+        const name = i === 0
+          ? result.name
+          : i === 1
+            ? `${result.name}_gzip`
+            : `${result.name}_brotli`
 
         return {
           ...current,
-          [result.name]: {
-            name: result.name,
+          [name]: {
+            name: name,
             size: +result.size,
-            ...time
           }
         };
       },
