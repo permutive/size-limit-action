@@ -5,7 +5,7 @@ import table from "markdown-table";
 import Term from "./Term";
 import SizeLimit from "./SizeLimit";
 
-const SIZE_LIMIT_HEADING = `## size-limit report 📦 `;
+const SIZE_LIMIT_HEADING = `## Bundle Size Report`;
 
 async function fetchPreviousComment(
   octokit: GitHub,

@@ -109,8 +109,8 @@ class SizeLimit {
         const name = i === 0
           ? result.name
           : i === 1
-            ? `${result.name}_gzip`
-            : `${result.name}_brotli`
+            ? `${result.name} (gzip)`
+            : `${result.name} (brotli)`
 
         return {
           ...current,
