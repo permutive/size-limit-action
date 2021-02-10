@@ -2178,6 +2178,7 @@ const markdown_table_1 = __importDefault(__webpack_require__(366));
 const Term_1 = __importDefault(__webpack_require__(733));
 const SizeLimit_1 = __importDefault(__webpack_require__(617));
 const SIZE_LIMIT_HEADING = `## Bundle Size Report`;
+const SNORLAX = '![snorlax](https://github.com/permutive/size-limit-action/blob/master/assets/snorlax.gif)';
 function fetchPreviousComment(octokit, repo, pr) {
     return __awaiter(this, void 0, void 0, function* () {
         // TODO: replace with octokit.issues.listComments when upgraded to v17
@@ -2218,7 +2219,9 @@ function run() {
             }
             const body = [
                 SIZE_LIMIT_HEADING,
-                markdown_table_1.default(limit.formatResults(base, current))
+                markdown_table_1.default(limit.formatResults(base, current)),
+                "\r\n",
+                SNORLAX,
             ].join("\r\n");
             const sizeLimitComment = yield fetchPreviousComment(octokit, repo, pr);
             if (!sizeLimitComment) {

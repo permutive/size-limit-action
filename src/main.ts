@@ -6,6 +6,7 @@ import Term from "./Term";
 import SizeLimit from "./SizeLimit";
 
 const SIZE_LIMIT_HEADING = `## Bundle Size Report`;
+const SNORLAX = '![snorlax](https://github.com/permutive/size-limit-action/blob/master/assets/snorlax.gif)'
 
 async function fetchPreviousComment(
   octokit: GitHub,
@@ -79,7 +80,9 @@ async function run() {
 
     const body = [
       SIZE_LIMIT_HEADING,
-      table(limit.formatResults(base, current))
+      table(limit.formatResults(base, current)),
+      "\r\n",
+      SNORLAX,
     ].join("\r\n");
 
     const sizeLimitComment = await fetchPreviousComment(octokit, repo, pr);
