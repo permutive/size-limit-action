@@ -8032,9 +8032,9 @@ class SizeLimit {
     parseResults(output) {
         const results = JSON.parse(output);
         return results.reduce((current, result, i) => {
-            const name = (i === 0 || i === 3)
+            const name = i === 0
                 ? result.name
-                : (i === 1 || i === 4)
+                : i === 1
                     ? `${result.name} (gzip)`
                     : `${result.name} (brotli)`;
             return Object.assign(Object.assign({}, current), { [name]: {
